@@ -1,0 +1,10 @@
+{
+  "name": "postman-app",
+  "version": "1.0.0",
+  "scripts": {
+    "backend": "cd backend && node server.js",
+    "frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npx nodemon server.js",
+    "install:all": "cd backend && npm install && cd ../frontend && npm install"
+  }
+}
