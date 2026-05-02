@@ -196,6 +196,56 @@ function NodeResult({ nodeId, result, nodeLabel }) {
   );
 }
 
+// ─── Export helper ────────────────────────────────────────────────────────────
+
+function buildExportPayload(results, nodeMap) {
+  const nodes = Object.entries(results).map(([nodeId, result]) => {
+    const label = nodeMap[nodeId]?.data?.label || nodeId;
+
+    if (Array.isArray(result)) {
+      return {
+        nodeId,
+        label,
+        iterations: result.map((iter) => ({
+          index: iter.index,
+          item: iter.item,
+          request: iter.response?.request || iter.request || null,
+          response: iter.response
+            ? { status: iter.response.status, headers: iter.response.responseHeaders, body: iter.response.data }
+            : null,
+          error: iter.error || null,
+          stopped: iter.stopped || false,
+        })),
+      };
+    }
+
+    if (result?.skipped) return { nodeId, label, skipped: true };
+
+    return {
+      nodeId,
+      label,
+      request: result?.request || null,
+      response: result?.error
+        ? null
+        : { status: result?.status, headers: result?.responseHeaders, body: result?.data },
+      error: result?.error || null,
+    };
+  });
+
+  return { exportedAt: new Date().toISOString(), nodes };
+}
+
+function exportResults(results, nodeMap) {
+  const payload = buildExportPayload(results, nodeMap);
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `workflow-results-${Date.now()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function ResponseViewer({ results, nodes }) {
@@ -212,6 +262,15 @@ export default function ResponseViewer({ results, nodes }) {
 
   return (
     <div>
+      <div style={{ padding: '8px 12px 4px', display: 'flex', justifyContent: 'flex-end' }}>
+        <button
+          className="btn-sm-dark"
+          onClick={() => exportResults(results, nodeMap)}
+          title="Export all results as JSON"
+        >
+          ⬇ Export Results
+        </button>
+      </div>
       {Object.entries(results).map(([nodeId, result]) => (
         <NodeResult
           key={nodeId}
