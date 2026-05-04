@@ -166,6 +166,16 @@ async function executeIteration(node, iteration, nodeMappings, results, injectCo
     }
   }
 
+  // When the iteration stopped successfully (the "winning" item was found),
+  // expose its value to downstream nodes by injecting it into the last
+  // response's data under iteration.storeAs.
+  if (iteration.storeAs && iterationResults.length > 0) {
+    const last = iterationResults[iterationResults.length - 1];
+    if (last.stopped && last.response?.data && typeof last.response.data === 'object' && !Array.isArray(last.response.data)) {
+      last.response.data[iteration.storeAs] = last.item;
+    }
+  }
+
   return iterationResults;
 }
 

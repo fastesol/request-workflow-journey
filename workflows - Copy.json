@@ -1,6 +1,6 @@
 {
   "globalConfig": {
-    "baseUrl": "https://api-gateway.prod.muvicinemas.com/api/v1",
+    "baseUrl": "http://api-gateway.uat.muvicinemas.com/api/v1",
     "auth": {
       "type": "bearer",
       "request": {
@@ -8,7 +8,7 @@
         "url": "/auth/verify-otp",
         "body": {
           "phoneNumber": "+966564950615",
-          "code": "6001"
+          "code": "4955"
         }
       },
       "tokenPath": "token",
@@ -25,8 +25,8 @@
           "id": "node_1777649285254",
           "type": "apiNode",
           "position": {
-            "x": -1365.7058369957201,
-            "y": -409.8339143902386
+            "x": -1367.5259146438825,
+            "y": -606.6234392418075
           },
           "data": {
             "label": "CIties",
@@ -39,11 +39,11 @@
             }
           },
           "width": 180,
-          "height": 65,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
-            "x": -1365.7058369957201,
-            "y": -409.8339143902386
+            "x": -1367.5259146438825,
+            "y": -606.6234392418075
           },
           "dragging": false
         },
@@ -51,15 +51,41 @@
           "id": "node_1777658199951",
           "type": "apiNode",
           "position": {
-            "x": -983.1107554261556,
-            "y": -762.2710765482058
+            "x": -628.8404971436596,
+            "y": -698.0538643586082
           },
           "data": {
             "label": "Cinemas",
             "method": "GET",
             "request": {
               "method": "GET",
-              "url": "/cinemas?cityId={{item}}",
+              "url": "/cinemas?cityId={{cityId}}",
+              "headers": {},
+              "body": {}
+            }
+          },
+          "width": 180,
+          "height": 63,
+          "selected": false,
+          "positionAbsolute": {
+            "x": -628.8404971436596,
+            "y": -698.0538643586082
+          },
+          "dragging": false
+        },
+        {
+          "id": "node_1777661182021",
+          "type": "apiNode",
+          "position": {
+            "x": -963.5752950999665,
+            "y": -836.2371191068753
+          },
+          "data": {
+            "label": "Films",
+            "method": "GET",
+            "request": {
+              "method": "GET",
+              "url": "/films?limit=4&page=1&type=SHOWING_NOW",
               "headers": {},
               "body": {}
             },
@@ -71,43 +97,18 @@
               "itemPath": "id",
               "mode": "sequential",
               "stopCondition": {
-                "path": "cinema",
+                "path": "data",
                 "check": "not-empty"
-              }
+              },
+              "storeAs": "matchedCityId"
             }
           },
-          "width": 180,
-          "height": 65,
-          "selected": true,
-          "positionAbsolute": {
-            "x": -983.1107554261556,
-            "y": -762.2710765482058
-          },
-          "dragging": false
-        },
-        {
-          "id": "node_1777661182021",
-          "type": "apiNode",
-          "position": {
-            "x": -743.7334489597831,
-            "y": -852.2256170079796
-          },
-          "data": {
-            "label": "Films",
-            "method": "GET",
-            "request": {
-              "method": "GET",
-              "url": "/films?limit=4&page=1&type=SHOWING_NOW",
-              "headers": {},
-              "body": {}
-            }
-          },
-          "width": 189,
-          "height": 65,
+          "width": 186,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
-            "x": -743.7334489597831,
-            "y": -852.2256170079796
+            "x": -963.5752950999665,
+            "y": -836.2371191068753
           },
           "dragging": false
         },
@@ -131,7 +132,7 @@
             }
           },
           "width": 180,
-          "height": 65,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": -1354.030532785234,
@@ -156,8 +157,8 @@
               "body": {}
             }
           },
-          "width": 211,
-          "height": 65,
+          "width": 209,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": -1355.709282726306,
@@ -182,8 +183,8 @@
               "body": {}
             }
           },
-          "width": 248,
-          "height": 65,
+          "width": 246,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": -1388.7014236169177,
@@ -209,7 +210,7 @@
             }
           },
           "width": 180,
-          "height": 65,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": -1361.9709804113547,
@@ -246,8 +247,8 @@
               }
             }
           },
-          "width": 225,
-          "height": 65,
+          "width": 223,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": -1004.6109496914204,
@@ -284,8 +285,8 @@
               }
             }
           },
-          "width": 244,
-          "height": 65,
+          "width": 242,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": -1004.1321908686499,
@@ -322,8 +323,8 @@
               }
             }
           },
-          "width": 248,
-          "height": 65,
+          "width": 246,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": -1004.7725279664509,
@@ -360,8 +361,8 @@
               }
             }
           },
-          "width": 246,
-          "height": 65,
+          "width": 244,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": -1004.8646201627352,
@@ -398,8 +399,8 @@
               }
             }
           },
-          "width": 234,
-          "height": 65,
+          "width": 231,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": -1003.9472523703124,
@@ -411,8 +412,8 @@
           "id": "node_1777666572719",
           "type": "apiNode",
           "position": {
-            "x": -493.99821720998443,
-            "y": -851.5515769518776
+            "x": -635.9424742266502,
+            "y": -838.0239720378922
           },
           "data": {
             "label": "Single Movie",
@@ -436,12 +437,12 @@
               }
             }
           },
-          "width": 194,
-          "height": 65,
+          "width": 191,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
-            "x": -493.99821720998443,
-            "y": -851.5515769518776
+            "x": -635.9424742266502,
+            "y": -838.0239720378922
           },
           "dragging": false
         },
@@ -474,8 +475,8 @@
               }
             }
           },
-          "width": 237,
-          "height": 65,
+          "width": 234,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": -225.09470713189836,
@@ -512,8 +513,8 @@
               }
             }
           },
-          "width": 248,
-          "height": 65,
+          "width": 246,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": -229.70564737642184,
@@ -538,8 +539,8 @@
               "body": {}
             }
           },
-          "width": 222,
-          "height": 65,
+          "width": 220,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": -225.20718691605916,
@@ -564,8 +565,8 @@
               "body": {}
             }
           },
-          "width": 231,
-          "height": 65,
+          "width": 228,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": -226.6939274271977,
@@ -594,8 +595,8 @@
               }
             }
           },
-          "width": 201,
-          "height": 65,
+          "width": 198,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": 23.80725928596992,
@@ -620,8 +621,8 @@
               "body": {}
             }
           },
-          "width": 240,
-          "height": 65,
+          "width": 237,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": 251.78071102804853,
@@ -648,8 +649,8 @@
               "body": {}
             }
           },
-          "width": 216,
-          "height": 65,
+          "width": 214,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": 240.0587402183861,
@@ -668,8 +669,8 @@
             "label": "Transform: Book Seat",
             "transform": "const areas = results['node_1777720465395'].data.seatLayoutData.areas;\nconst sessionId = results['node_1777674821623'].data.cinemas[0].experiences[0].sessions[0].id;\n\nconst tickets = areas.map(area => {\n\tconst available = area.rows\n\t  .flatMap(r => r.seats)\n\t  .filter(s => !s.isDisabled && s.seatStyle !== 'EMPTY');\n\tconst picked = available.sort(() => Math.random() - 0.5).slice(0, 2);\n\treturn {\n\t  price: area.ticket.price,\n\t  ticketTypeCode: area.ticket.ticketTypeCode,\n\t  description: area.description,\n\t  seats: picked.map(s => ({\n\t\tseatsInGroup: [],\n\t\tposition: s.position,\n\t\tisDisabled: false,\n\t\tseatStyle: s.seatStyle\n\t  }))\n\t};\n});\n\nreturn { sessionId, tickets };"
           },
-          "width": 232,
-          "height": 64,
+          "width": 229,
+          "height": 60,
           "selected": false,
           "positionAbsolute": {
             "x": 488.8758125897001,
@@ -696,8 +697,8 @@
               "body": {}
             }
           },
-          "width": 195,
-          "height": 65,
+          "width": 192,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": 771.7134485205352,
@@ -715,8 +716,8 @@
           "data": {
             "label": "Start"
           },
-          "width": 143,
-          "height": 47,
+          "width": 139,
+          "height": 44,
           "selected": false,
           "positionAbsolute": {
             "x": -1703.960135166884,
@@ -753,8 +754,8 @@
               }
             }
           },
-          "width": 225,
-          "height": 65,
+          "width": 223,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": -998.6587378265965,
@@ -791,8 +792,8 @@
               }
             }
           },
-          "width": 244,
-          "height": 65,
+          "width": 242,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": -998.179979003826,
@@ -829,8 +830,8 @@
               }
             }
           },
-          "width": 248,
-          "height": 65,
+          "width": 246,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": -998.820316101627,
@@ -867,8 +868,8 @@
               }
             }
           },
-          "width": 246,
-          "height": 65,
+          "width": 244,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": -1000.3188014978243,
@@ -905,8 +906,8 @@
               }
             }
           },
-          "width": 234,
-          "height": 65,
+          "width": 231,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
             "x": -999.4014337054016,
@@ -918,8 +919,8 @@
           "id": "node_1777752344428",
           "type": "apiNode",
           "position": {
-            "x": -739.302112820107,
-            "y": -706.9411693015027
+            "x": -237.33233391865582,
+            "y": -510.40696083525717
           },
           "data": {
             "label": "/showtimes - cinema",
@@ -931,34 +932,43 @@
               "body": {}
             }
           },
-          "width": 240,
-          "height": 65,
+          "width": 237,
+          "height": 63,
           "selected": false,
           "positionAbsolute": {
-            "x": -739.302112820107,
-            "y": -706.9411693015027
+            "x": -237.33233391865582,
+            "y": -510.40696083525717
+          },
+          "dragging": false
+        },
+        {
+          "id": "node_1777797631551",
+          "type": "apiNode",
+          "position": {
+            "x": -223.7869961304386,
+            "y": -1069.2449769072875
+          },
+          "data": {
+            "label": "Film by Id",
+            "method": "GET",
+            "request": {
+              "method": "GET",
+              "url": "/films/{{filmId}}",
+              "headers": {},
+              "body": {}
+            }
+          },
+          "width": 180,
+          "height": 63,
+          "selected": false,
+          "positionAbsolute": {
+            "x": -223.7869961304386,
+            "y": -1069.2449769072875
           },
           "dragging": false
         }
       ],
       "edges": [
-        {
-          "source": "node_1777649285254",
-          "sourceHandle": null,
-          "target": "node_1777658199951",
-          "targetHandle": null,
-          "animated": true,
-          "id": "reactflow__edge-node_1777649285254-node_1777658199951"
-        },
-        {
-          "source": "node_1777658199951",
-          "sourceHandle": null,
-          "target": "node_1777661182021",
-          "targetHandle": null,
-          "animated": true,
-          "id": "reactflow__edge-node_1777658199951-node_1777661182021",
-          "selected": false
-        },
         {
           "source": "node_1777649285254",
           "sourceHandle": null,
@@ -1192,6 +1202,33 @@
           "type": "deletable",
           "animated": true,
           "id": "reactflow__edge-node_1777658199951-node_1777752344428"
+        },
+        {
+          "source": "node_1777649285254",
+          "sourceHandle": null,
+          "target": "node_1777661182021",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777649285254-node_1777661182021"
+        },
+        {
+          "source": "node_1777661182021",
+          "sourceHandle": null,
+          "target": "node_1777658199951",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777661182021-node_1777658199951"
+        },
+        {
+          "source": "node_1777666572719",
+          "sourceHandle": null,
+          "target": "node_1777797631551",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777666572719-node_1777797631551"
         }
       ],
       "mappings": [
@@ -1204,41 +1241,6 @@
           "to": {
             "nodeId": "node_1777653900893",
             "field": "body.cityId"
-          }
-        },
-        {
-          "id": "map_1777662399345_m7of7",
-          "from": {
-            "nodeId": "node_1777658199951",
-            "path": "data.cinema[0].cityId"
-          },
-          "to": {
-            "nodeId": "node_1777661182021",
-            "field": "queryParam.cityId"
-          }
-        },
-        {
-          "id": "map_1777662535848_sknwz",
-          "type": "collect",
-          "from": {
-            "nodeId": "node_1777658199951",
-            "arrayPath": "data.cinema",
-            "fieldPath": "id"
-          },
-          "to": {
-            "nodeId": "node_1777661182021",
-            "paramName": "cinemaIds"
-          }
-        },
-        {
-          "id": "map_1777666760893_u6jnl",
-          "from": {
-            "nodeId": "node_1777658199951",
-            "path": "data.cinema[0].cityId"
-          },
-          "to": {
-            "nodeId": "node_1777666572719",
-            "field": "queryParam.cityId"
           }
         },
         {
@@ -1442,17 +1444,6 @@
           }
         },
         {
-          "id": "map_1777752708519_sud71",
-          "from": {
-            "nodeId": "node_1777658199951",
-            "path": "data.cinema[0].cityId"
-          },
-          "to": {
-            "nodeId": "node_1777752344428",
-            "field": "queryParam.cityId"
-          }
-        },
-        {
           "id": "map_1777752898765_0i4hu",
           "type": "random",
           "from": {
@@ -1463,6 +1454,83 @@
           "to": {
             "nodeId": "node_1777752344428",
             "field": "queryParam.cinemaId"
+          }
+        },
+        {
+          "id": "map_1777794396614_zwg7l",
+          "from": {
+            "nodeId": "node_1777661182021",
+            "path": "data.matchedCityId"
+          },
+          "to": {
+            "nodeId": "node_1777658199951",
+            "field": "urlParam.cityId"
+          }
+        },
+        {
+          "id": "map_1777794459917_68vip",
+          "from": {
+            "nodeId": "node_1777661182021",
+            "path": "data.matchedCityId"
+          },
+          "to": {
+            "nodeId": "node_1777752344428",
+            "field": "queryParam.cityId"
+          }
+        },
+        {
+          "id": "map_1777794681895_m27j9",
+          "from": {
+            "nodeId": "__iteration__",
+            "path": "id"
+          },
+          "to": {
+            "nodeId": "node_1777661182021",
+            "field": "queryParam.cityId"
+          }
+        },
+        {
+          "id": "map_1777798040103_rorev",
+          "from": {
+            "nodeId": "node_1777661182021",
+            "path": "data.matchedCityId"
+          },
+          "to": {
+            "nodeId": "node_1777797631551",
+            "field": "queryParam.cityId"
+          }
+        },
+        {
+          "id": "map_1777798132193_urw4d",
+          "from": {
+            "nodeId": "node_1777666572719",
+            "path": "data.film.id"
+          },
+          "to": {
+            "nodeId": "node_1777797631551",
+            "field": "urlParam.filmId"
+          }
+        },
+        {
+          "id": "map_1777799009570_oykeq",
+          "from": {
+            "nodeId": "node_1777661182021",
+            "path": "data.matchedCityId"
+          },
+          "to": {
+            "nodeId": "node_1777666572719",
+            "field": "queryParam.cityId"
+          }
+        },
+        {
+          "id": "map_1777800106826_1ncvj",
+          "from": {
+            "nodeId": "node_1777711601952",
+            "path": "data.order.id"
+          },
+          "to": {
+            "nodeId": "node_1777800030341",
+            "field": "urlParam.orderId"
           }
         }
       ]
@@ -1517,148 +1585,18 @@
           "dragging": false
         },
         {
-          "id": "node_1777745658745",
-          "type": "apiNode",
-          "position": {
-            "x": 582.0172947083711,
-            "y": 280.6031300476228
-          },
-          "data": {
-            "label": "Cards",
-            "method": "GET",
-            "request": {
-              "method": "GET",
-              "url": "/cards?limit=50&page=1",
-              "headers": {},
-              "body": {}
-            }
-          },
-          "width": 180,
-          "height": 65,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 582.0172947083711,
-            "y": 280.6031300476228
-          },
-          "dragging": false
-        },
-        {
-          "id": "node_1777745683771",
-          "type": "apiNode",
-          "position": {
-            "x": 583.5136373978579,
-            "y": 365.31705466628335
-          },
-          "data": {
-            "label": "Wallet - E_WALLET",
-            "method": "GET",
-            "request": {
-              "method": "GET",
-              "url": "/wallet/balance?walletType=E_WALLET",
-              "headers": {},
-              "body": {}
-            }
-          },
-          "width": 226,
-          "height": 65,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 583.5136373978579,
-            "y": 365.31705466628335
-          },
-          "dragging": false
-        },
-        {
-          "id": "node_1777745711521",
-          "type": "apiNode",
-          "position": {
-            "x": 585.0099800873446,
-            "y": 540.7008819838939
-          },
-          "data": {
-            "label": "Detailed Balance",
-            "method": "GET",
-            "request": {
-              "method": "GET",
-              "url": "/wallet/detailed-balance",
-              "headers": {},
-              "body": {}
-            }
-          },
-          "width": 215,
-          "height": 65,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 585.0099800873446,
-            "y": 540.7008819838939
-          },
-          "dragging": false
-        },
-        {
-          "id": "node_1777745735334",
-          "type": "apiNode",
-          "position": {
-            "x": 586.5063227768319,
-            "y": 627.8989135258133
-          },
-          "data": {
-            "label": "Orders - HISTORY",
-            "method": "GET",
-            "request": {
-              "method": "GET",
-              "url": "/orders?type=HISTORY&limit=1&page=1",
-              "headers": {},
-              "body": {}
-            }
-          },
-          "width": 221,
-          "height": 65,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 586.5063227768319,
-            "y": 627.8989135258133
-          },
-          "dragging": false
-        },
-        {
-          "id": "node_1777745866282",
-          "type": "apiNode",
-          "position": {
-            "x": 581.7923981581711,
-            "y": 454.26571812554675
-          },
-          "data": {
-            "label": "Wallet - CASHBACK_WALLET",
-            "method": "GET",
-            "request": {
-              "method": "GET",
-              "url": "/wallet?limit=10&page=1&walletType=CASHBACK_WALLET",
-              "headers": {},
-              "body": {}
-            }
-          },
-          "width": 248,
-          "height": 65,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 581.7923981581711,
-            "y": 454.26571812554675
-          },
-          "dragging": false
-        },
-        {
           "id": "node_1777746344273",
           "type": "apiNode",
           "position": {
-            "x": 584.2347068436433,
-            "y": 714.543455245194
+            "x": 596.14359473894,
+            "y": 458.5023654963135
           },
           "data": {
             "label": "Notifications",
             "method": "GET",
             "request": {
               "method": "GET",
-              "url": "notifications?page=1&limit=10",
+              "url": "/notifications?page=1&limit=10",
               "headers": {},
               "body": {}
             }
@@ -1667,34 +1605,8 @@
           "height": 65,
           "selected": false,
           "positionAbsolute": {
-            "x": 584.2347068436433,
-            "y": 714.543455245194
-          },
-          "dragging": false
-        },
-        {
-          "id": "node_1777746372202",
-          "type": "apiNode",
-          "position": {
-            "x": 581.830662144715,
-            "y": 895.267025469793
-          },
-          "data": {
-            "label": "Orders - UPCOMING",
-            "method": "GET",
-            "request": {
-              "method": "GET",
-              "url": "/orders?type=UPCOMING&limit=50&page=1",
-              "headers": {},
-              "body": {}
-            }
-          },
-          "width": 238,
-          "height": 65,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 581.830662144715,
-            "y": 895.267025469793
+            "x": 596.14359473894,
+            "y": 458.5023654963135
           },
           "dragging": false
         },
@@ -1715,7 +1627,7 @@
               "body": {}
             }
           },
-          "width": 203,
+          "width": 202,
           "height": 65,
           "selected": false,
           "positionAbsolute": {
@@ -1728,8 +1640,8 @@
           "id": "node_1777748715050",
           "type": "apiNode",
           "position": {
-            "x": 582.5819313983313,
-            "y": 983.9028362157969
+            "x": 594.4908192936281,
+            "y": 646.4655196248679
           },
           "data": {
             "label": "Avatars",
@@ -1745,8 +1657,8 @@
           "height": 65,
           "selected": false,
           "positionAbsolute": {
-            "x": 582.5819313983313,
-            "y": 983.9028362157969
+            "x": 594.4908192936281,
+            "y": 646.4655196248679
           },
           "dragging": false
         },
@@ -1754,8 +1666,8 @@
           "id": "node_1777749508172",
           "type": "apiNode",
           "position": {
-            "x": 586.0789957967606,
-            "y": 805.3553776130502
+            "x": 597.9878836920574,
+            "y": 549.3142878641697
           },
           "data": {
             "label": "Notif Unread Count",
@@ -1767,12 +1679,12 @@
               "body": {}
             }
           },
-          "width": 233,
+          "width": 232,
           "height": 65,
-          "selected": false,
+          "selected": true,
           "positionAbsolute": {
-            "x": 586.0789957967606,
-            "y": 805.3553776130502
+            "x": 597.9878836920574,
+            "y": 549.3142878641697
           },
           "dragging": false
         },
@@ -1780,8 +1692,8 @@
           "id": "node_1777749819734",
           "type": "apiNode",
           "position": {
-            "x": 1004.6770484437513,
-            "y": 628.2617585615207
+            "x": 1022.65211243357,
+            "y": 428.5388253413148
           },
           "data": {
             "label": "Notif - Read",
@@ -1798,8 +1710,8 @@
           "height": 65,
           "selected": false,
           "positionAbsolute": {
-            "x": 1004.6770484437513,
-            "y": 628.2617585615207
+            "x": 1022.65211243357,
+            "y": 428.5388253413148
           },
           "dragging": false
         },
@@ -1807,8 +1719,8 @@
           "id": "node_1777749959159",
           "type": "apiNode",
           "position": {
-            "x": 1004.2739474945447,
-            "y": 719.6838870423293
+            "x": 1022.2490114843633,
+            "y": 519.9609538221234
           },
           "data": {
             "label": "Notif - Read Temp",
@@ -1825,8 +1737,8 @@
           "height": 65,
           "selected": false,
           "positionAbsolute": {
-            "x": 1004.2739474945447,
-            "y": 719.6838870423293
+            "x": 1022.2490114843633,
+            "y": 519.9609538221234
           },
           "dragging": false
         },
@@ -1834,8 +1746,8 @@
           "id": "node_1777750050382",
           "type": "apiNode",
           "position": {
-            "x": 1004.4804638365003,
-            "y": 809.7068838392707
+            "x": 1022.455527826319,
+            "y": 609.9839506190649
           },
           "data": {
             "label": "Notif - Delete",
@@ -1852,8 +1764,8 @@
           "height": 65,
           "selected": false,
           "positionAbsolute": {
-            "x": 1004.4804638365003,
-            "y": 809.7068838392707
+            "x": 1022.455527826319,
+            "y": 609.9839506190649
           },
           "dragging": false
         },
@@ -1861,8 +1773,8 @@
           "id": "node_1777751052887",
           "type": "apiNode",
           "position": {
-            "x": 583.0269222469094,
-            "y": 1079.8604292798557
+            "x": 594.9358101422062,
+            "y": 742.4231126889266
           },
           "data": {
             "label": "Voucher Redemption Steps",
@@ -1878,8 +1790,60 @@
           "height": 65,
           "selected": false,
           "positionAbsolute": {
-            "x": 583.0269222469094,
-            "y": 1079.8604292798557
+            "x": 594.9358101422062,
+            "y": 742.4231126889266
+          },
+          "dragging": false
+        },
+        {
+          "id": "node_1777797413994",
+          "type": "apiNode",
+          "position": {
+            "x": 1709.9218911128194,
+            "y": 509.0089394089398
+          },
+          "data": {
+            "label": "Delete Account",
+            "method": "DELETE",
+            "request": {
+              "method": "DELETE",
+              "url": "/auth/delete-account----",
+              "headers": {},
+              "body": {}
+            }
+          },
+          "width": 225,
+          "height": 65,
+          "selected": false,
+          "positionAbsolute": {
+            "x": 1709.9218911128194,
+            "y": 509.0089394089398
+          },
+          "dragging": false
+        },
+        {
+          "id": "node_1777807022329",
+          "type": "apiNode",
+          "position": {
+            "x": 1390.552945518153,
+            "y": 189.3559055182797
+          },
+          "data": {
+            "label": "Guest Phone Number",
+            "method": "POST",
+            "request": {
+              "method": "POST",
+              "url": "/guest-users/phone-number ",
+              "headers": {},
+              "body": {}
+            }
+          },
+          "width": 251,
+          "height": 65,
+          "selected": false,
+          "positionAbsolute": {
+            "x": 1390.552945518153,
+            "y": 189.3559055182797
           },
           "dragging": false
         }
@@ -1893,51 +1857,6 @@
           "type": "deletable",
           "animated": true,
           "id": "reactflow__edge-node_1777745602251-node_1777745608135"
-        },
-        {
-          "source": "node_1777745602251",
-          "sourceHandle": null,
-          "target": "node_1777745658745",
-          "targetHandle": null,
-          "type": "deletable",
-          "animated": true,
-          "id": "reactflow__edge-node_1777745602251-node_1777745658745"
-        },
-        {
-          "source": "node_1777745602251",
-          "sourceHandle": null,
-          "target": "node_1777745683771",
-          "targetHandle": null,
-          "type": "deletable",
-          "animated": true,
-          "id": "reactflow__edge-node_1777745602251-node_1777745683771"
-        },
-        {
-          "source": "node_1777745602251",
-          "sourceHandle": null,
-          "target": "node_1777745866282",
-          "targetHandle": null,
-          "type": "deletable",
-          "animated": true,
-          "id": "reactflow__edge-node_1777745602251-node_1777745866282"
-        },
-        {
-          "source": "node_1777745602251",
-          "sourceHandle": null,
-          "target": "node_1777745711521",
-          "targetHandle": null,
-          "type": "deletable",
-          "animated": true,
-          "id": "reactflow__edge-node_1777745602251-node_1777745711521"
-        },
-        {
-          "source": "node_1777745602251",
-          "sourceHandle": null,
-          "target": "node_1777745735334",
-          "targetHandle": null,
-          "type": "deletable",
-          "animated": true,
-          "id": "reactflow__edge-node_1777745602251-node_1777745735334"
         },
         {
           "source": "node_1777745602251",
@@ -1965,15 +1884,6 @@
           "type": "deletable",
           "animated": true,
           "id": "reactflow__edge-node_1777745602251-node_1777749508172"
-        },
-        {
-          "source": "node_1777745602251",
-          "sourceHandle": null,
-          "target": "node_1777746372202",
-          "targetHandle": null,
-          "type": "deletable",
-          "animated": true,
-          "id": "reactflow__edge-node_1777745602251-node_1777746372202"
         },
         {
           "source": "node_1777745602251",
@@ -2019,6 +1929,60 @@
           "type": "deletable",
           "animated": true,
           "id": "reactflow__edge-node_1777745602251-node_1777751052887"
+        },
+        {
+          "source": "node_1777749819734",
+          "sourceHandle": null,
+          "target": "node_1777797413994",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777749819734-node_1777797413994"
+        },
+        {
+          "source": "node_1777749959159",
+          "sourceHandle": null,
+          "target": "node_1777797413994",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777749959159-node_1777797413994"
+        },
+        {
+          "source": "node_1777750050382",
+          "sourceHandle": null,
+          "target": "node_1777797413994",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777750050382-node_1777797413994"
+        },
+        {
+          "source": "node_1777747750704",
+          "sourceHandle": null,
+          "target": "node_1777807022329",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777747750704-node_1777807022329"
+        },
+        {
+          "source": "node_1777807022329",
+          "sourceHandle": null,
+          "target": "node_1777797413994",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777807022329-node_1777797413994"
+        },
+        {
+          "source": "node_1777745608135",
+          "sourceHandle": null,
+          "target": "node_1777797413994",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777745608135-node_1777797413994"
         }
       ],
       "mappings": [
@@ -2262,6 +2226,1267 @@
           "to": {
             "nodeId": "node_1777750050382",
             "field": "urlParam.id"
+          }
+        },
+        {
+          "id": "map_1777807169907_3zlla",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.phoneNumber"
+          },
+          "to": {
+            "nodeId": "node_1777807022329",
+            "field": "body.phoneNumber"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wf_1777807543254_f2elv83io2",
+      "name": "Wallet Details",
+      "nodes": [
+        {
+          "id": "node_1777745602251",
+          "type": "startNode",
+          "position": {
+            "x": 197.45230052578233,
+            "y": 449.11929721365334
+          },
+          "data": {
+            "label": "Start"
+          },
+          "width": 143,
+          "height": 47,
+          "selected": true,
+          "positionAbsolute": {
+            "x": 197.45230052578233,
+            "y": 449.11929721365334
+          },
+          "dragging": false
+        },
+        {
+          "id": "node_1777745608135",
+          "type": "apiNode",
+          "position": {
+            "x": 584.2471124037725,
+            "y": 185.95277773592682
+          },
+          "data": {
+            "label": "Me",
+            "method": "GET",
+            "request": {
+              "method": "GET",
+              "url": "/auth/me",
+              "headers": {},
+              "body": {}
+            }
+          },
+          "width": 180,
+          "height": 65,
+          "selected": false,
+          "positionAbsolute": {
+            "x": 584.2471124037725,
+            "y": 185.95277773592682
+          },
+          "dragging": false
+        },
+        {
+          "id": "node_1777745658745",
+          "type": "apiNode",
+          "position": {
+            "x": 582.0172947083711,
+            "y": 280.6031300476228
+          },
+          "data": {
+            "label": "Cards",
+            "method": "GET",
+            "request": {
+              "method": "GET",
+              "url": "/cards?limit=50&page=1",
+              "headers": {},
+              "body": {}
+            }
+          },
+          "width": 180,
+          "height": 65,
+          "selected": false,
+          "positionAbsolute": {
+            "x": 582.0172947083711,
+            "y": 280.6031300476228
+          },
+          "dragging": false
+        },
+        {
+          "id": "node_1777745683771",
+          "type": "apiNode",
+          "position": {
+            "x": 583.5136373978579,
+            "y": 365.31705466628335
+          },
+          "data": {
+            "label": "Wallet - E_WALLET",
+            "method": "GET",
+            "request": {
+              "method": "GET",
+              "url": "/wallet/balance?walletType=E_WALLET",
+              "headers": {},
+              "body": {}
+            }
+          },
+          "width": 226,
+          "height": 65,
+          "selected": false,
+          "positionAbsolute": {
+            "x": 583.5136373978579,
+            "y": 365.31705466628335
+          },
+          "dragging": false
+        },
+        {
+          "id": "node_1777745711521",
+          "type": "apiNode",
+          "position": {
+            "x": 585.0099800873446,
+            "y": 540.7008819838939
+          },
+          "data": {
+            "label": "Detailed Balance",
+            "method": "GET",
+            "request": {
+              "method": "GET",
+              "url": "/wallet/detailed-balance",
+              "headers": {},
+              "body": {}
+            }
+          },
+          "width": 215,
+          "height": 65,
+          "selected": false,
+          "positionAbsolute": {
+            "x": 585.0099800873446,
+            "y": 540.7008819838939
+          },
+          "dragging": false
+        },
+        {
+          "id": "node_1777745866282",
+          "type": "apiNode",
+          "position": {
+            "x": 581.7923981581711,
+            "y": 454.26571812554675
+          },
+          "data": {
+            "label": "Wallet - CASHBACK_WALLET",
+            "method": "GET",
+            "request": {
+              "method": "GET",
+              "url": "/wallet?limit=10&page=1&walletType=CASHBACK_WALLET",
+              "headers": {},
+              "body": {}
+            }
+          },
+          "width": 248,
+          "height": 65,
+          "selected": false,
+          "positionAbsolute": {
+            "x": 581.7923981581711,
+            "y": 454.26571812554675
+          },
+          "dragging": false
+        },
+        {
+          "id": "node_1777751052887",
+          "type": "apiNode",
+          "position": {
+            "x": 581.3213784545457,
+            "y": 633.8607275767449
+          },
+          "data": {
+            "label": "Voucher Redemption Steps",
+            "method": "GET",
+            "request": {
+              "method": "GET",
+              "url": "/voucher-redemption-steps",
+              "headers": {},
+              "body": {}
+            }
+          },
+          "width": 248,
+          "height": 65,
+          "selected": false,
+          "positionAbsolute": {
+            "x": 581.3213784545457,
+            "y": 633.8607275767449
+          },
+          "dragging": false
+        },
+        {
+          "id": "node_1777799263119",
+          "type": "apiNode",
+          "position": {
+            "x": 1004.570793058238,
+            "y": 281.2259276133986
+          },
+          "data": {
+            "label": "Hyper Pay - Add Card",
+            "method": "GET",
+            "request": {
+              "method": "GET",
+              "url": "/cards/hyper-pay/initialize-add-card",
+              "headers": {},
+              "body": {}
+            }
+          },
+          "width": 244,
+          "height": 65,
+          "selected": false,
+          "positionAbsolute": {
+            "x": 1004.570793058238,
+            "y": 281.2259276133986
+          },
+          "dragging": false
+        },
+        {
+          "id": "node_1777807674310",
+          "type": "apiNode",
+          "position": {
+            "x": 587.50020453979,
+            "y": 730.177725675563
+          },
+          "data": {
+            "label": "Orders - UPCOMING",
+            "method": "GET",
+            "request": {
+              "method": "GET",
+              "url": "/orders?type=UPCOMING&limit=50&page=1",
+              "headers": {},
+              "body": {}
+            }
+          },
+          "width": 238,
+          "height": 65,
+          "selected": false,
+          "positionAbsolute": {
+            "x": 587.50020453979,
+            "y": 730.177725675563
+          },
+          "dragging": false
+        }
+      ],
+      "edges": [
+        {
+          "source": "node_1777745602251",
+          "sourceHandle": null,
+          "target": "node_1777745608135",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777745602251-node_1777745608135"
+        },
+        {
+          "source": "node_1777745602251",
+          "sourceHandle": null,
+          "target": "node_1777745658745",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777745602251-node_1777745658745"
+        },
+        {
+          "source": "node_1777745602251",
+          "sourceHandle": null,
+          "target": "node_1777745683771",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777745602251-node_1777745683771"
+        },
+        {
+          "source": "node_1777745602251",
+          "sourceHandle": null,
+          "target": "node_1777745866282",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777745602251-node_1777745866282"
+        },
+        {
+          "source": "node_1777745602251",
+          "sourceHandle": null,
+          "target": "node_1777745711521",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777745602251-node_1777745711521"
+        },
+        {
+          "source": "node_1777745602251",
+          "sourceHandle": null,
+          "target": "node_1777751052887",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777745602251-node_1777751052887"
+        },
+        {
+          "source": "node_1777745658745",
+          "sourceHandle": null,
+          "target": "node_1777799263119",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777745658745-node_1777799263119"
+        },
+        {
+          "source": "node_1777745602251",
+          "sourceHandle": null,
+          "target": "node_1777807674310",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777745602251-node_1777807674310"
+        }
+      ],
+      "mappings": [
+        {
+          "id": "map_1777748209866_n29wi",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.dateOfBirth"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.dateOfBirth"
+          }
+        },
+        {
+          "id": "map_1777748221000_5cpba",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.lastName"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.lastName"
+          }
+        },
+        {
+          "id": "map_1777748227924_g7jjz",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.firstName"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.firstName"
+          }
+        },
+        {
+          "id": "map_1777748434235_ks4ew",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.roles"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.roles"
+          }
+        },
+        {
+          "id": "map_1777748446643_olnoe",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.cinemasIds"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.cinemasIds"
+          }
+        },
+        {
+          "id": "map_1777748456119_myn87",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.id"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.id"
+          }
+        },
+        {
+          "id": "map_1777748465565_u0spc",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.isVerified"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.isVerified"
+          }
+        },
+        {
+          "id": "map_1777748472300_z8yk2",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.type"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.type"
+          }
+        },
+        {
+          "id": "map_1777748480257_2bd4o",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.isCompleteProfile"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.isCompleteProfile"
+          }
+        },
+        {
+          "id": "map_1777748487275_53w2m",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.status"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.status"
+          }
+        },
+        {
+          "id": "map_1777748497062_wyp1i",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.gender"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.gender"
+          }
+        },
+        {
+          "id": "map_1777748505680_l4gyj",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.vistaMemberId"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.vistaMemberId"
+          }
+        },
+        {
+          "id": "map_1777748513245_vnhuv",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.preferredCityId"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.preferredCityId"
+          }
+        },
+        {
+          "id": "map_1777748522152_zr7w8",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.checkoutCustomerId"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.checkoutCustomerId"
+          }
+        },
+        {
+          "id": "map_1777748529567_uyfg1",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.createdAt"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.createdAt"
+          }
+        },
+        {
+          "id": "map_1777748614496_o6gaw",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.updatedAt"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.updatedAt"
+          }
+        },
+        {
+          "id": "map_1777748622199_7017d",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.userExternalId"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.userExternalId"
+          }
+        },
+        {
+          "id": "map_1777748629959_bkdnh",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.language"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.language"
+          }
+        },
+        {
+          "id": "map_1777748651673_lpsn2",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.preferredCity"
+          },
+          "to": {
+            "nodeId": "node_1777747750704",
+            "field": "body.preferredCity"
+          }
+        },
+        {
+          "id": "map_1777749893934_n3q4i",
+          "from": {
+            "nodeId": "node_1777746344273",
+            "path": "data.data[0].id"
+          },
+          "to": {
+            "nodeId": "node_1777749819734",
+            "field": "urlParam.id"
+          }
+        },
+        {
+          "id": "map_1777750033635_rwjwo",
+          "from": {
+            "nodeId": "node_1777746344273",
+            "path": "data.data[0].id"
+          },
+          "to": {
+            "nodeId": "node_1777749959159",
+            "field": "urlParam.id"
+          }
+        },
+        {
+          "id": "map_1777750094751_51cdi",
+          "from": {
+            "nodeId": "node_1777746344273",
+            "path": "data.data[0].id"
+          },
+          "to": {
+            "nodeId": "node_1777750050382",
+            "field": "urlParam.id"
+          }
+        },
+        {
+          "id": "map_1777807169907_3zlla",
+          "from": {
+            "nodeId": "node_1777745608135",
+            "path": "data.user.phoneNumber"
+          },
+          "to": {
+            "nodeId": "node_1777807022329",
+            "field": "body.phoneNumber"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wf_1777808141440_i863wm4ivbg",
+      "name": "Offers",
+      "nodes": [
+        {
+          "id": "node_1777649285254",
+          "type": "apiNode",
+          "position": {
+            "x": -1454.1917176987286,
+            "y": -855.4052738933658
+          },
+          "data": {
+            "label": "CIties",
+            "method": "GET",
+            "request": {
+              "method": "GET",
+              "url": "/cities",
+              "headers": {},
+              "body": {}
+            }
+          },
+          "width": 180,
+          "height": 65,
+          "selected": false,
+          "positionAbsolute": {
+            "x": -1454.1917176987286,
+            "y": -855.4052738933658
+          },
+          "dragging": false
+        },
+        {
+          "id": "node_1777661182021",
+          "type": "apiNode",
+          "position": {
+            "x": -1174.632015480592,
+            "y": -855.609475083841
+          },
+          "data": {
+            "label": "Films",
+            "method": "GET",
+            "request": {
+              "method": "GET",
+              "url": "/films?limit=4&page=1&type=SHOWING_NOW",
+              "headers": {},
+              "body": {}
+            },
+            "iteration": {
+              "source": {
+                "nodeId": "node_1777649285254",
+                "path": "data.city"
+              },
+              "itemPath": "id",
+              "mode": "sequential",
+              "stopCondition": {
+                "path": "data",
+                "check": "not-empty"
+              },
+              "storeAs": "matchedCityId"
+            }
+          },
+          "width": 189,
+          "height": 65,
+          "selected": false,
+          "positionAbsolute": {
+            "x": -1174.632015480592,
+            "y": -855.609475083841
+          },
+          "dragging": false
+        },
+        {
+          "id": "node_1777666572719",
+          "type": "apiNode",
+          "position": {
+            "x": -900.0182741231814,
+            "y": -855.3571326488615
+          },
+          "data": {
+            "label": "Single Movie",
+            "method": "GET",
+            "request": {
+              "method": "GET",
+              "url": "/films/unique-name/{{item}}",
+              "headers": {},
+              "body": {}
+            },
+            "iteration": {
+              "source": {
+                "nodeId": "node_1777661182021",
+                "path": "data.data"
+              },
+              "itemPath": "uniqueName",
+              "mode": "sequential",
+              "stopCondition": {
+                "path": "film",
+                "check": "not-empty"
+              }
+            }
+          },
+          "width": 193,
+          "height": 65,
+          "selected": false,
+          "positionAbsolute": {
+            "x": -900.0182741231814,
+            "y": -855.3571326488615
+          },
+          "dragging": false
+        },
+        {
+          "id": "node_1777744778789",
+          "type": "startNode",
+          "position": {
+            "x": -1703.960135166884,
+            "y": -849.5862387125198
+          },
+          "data": {
+            "label": "Start"
+          },
+          "width": 143,
+          "height": 47,
+          "selected": false,
+          "positionAbsolute": {
+            "x": -1703.960135166884,
+            "y": -849.5862387125198
+          },
+          "dragging": false
+        },
+        {
+          "id": "node_1777808236319",
+          "type": "apiNode",
+          "position": {
+            "x": -615.0002487067998,
+            "y": -925.3954896178542
+          },
+          "data": {
+            "label": "Offers",
+            "method": "GET",
+            "request": {
+              "method": "GET",
+              "url": "/offers",
+              "headers": {},
+              "body": {}
+            }
+          },
+          "width": 180,
+          "height": 65,
+          "selected": false,
+          "dragging": false,
+          "positionAbsolute": {
+            "x": -615.0002487067998,
+            "y": -925.3954896178542
+          }
+        },
+        {
+          "id": "node_1777808256695",
+          "type": "apiNode",
+          "position": {
+            "x": -621.047219765903,
+            "y": -757.4360267484536
+          },
+          "data": {
+            "label": "Offer Film",
+            "method": "GET",
+            "request": {
+              "method": "GET",
+              "url": "/offers/check-film",
+              "headers": {},
+              "body": {}
+            }
+          },
+          "width": 180,
+          "height": 65,
+          "selected": false,
+          "dragging": false,
+          "positionAbsolute": {
+            "x": -621.047219765903,
+            "y": -757.4360267484536
+          }
+        },
+        {
+          "id": "node_1777811113808",
+          "type": "apiNode",
+          "position": {
+            "x": -344.40742774381124,
+            "y": -982.0632224232991
+          },
+          "data": {
+            "label": "Offers By ID",
+            "method": "GET",
+            "request": {
+              "method": "GET",
+              "url": "/offers/{{offerId}}",
+              "headers": {},
+              "body": {}
+            },
+            "condition": "results['node_1777808236319'].data?.offers?.length > 0"
+          },
+          "width": 188,
+          "height": 65,
+          "selected": true,
+          "dragging": false,
+          "positionAbsolute": {
+            "x": -344.40742774381124,
+            "y": -982.0632224232991
+          }
+        },
+        {
+          "id": "node_1777811456131",
+          "type": "apiNode",
+          "position": {
+            "x": -347.7065163962501,
+            "y": -869.5624228192154
+          },
+          "data": {
+            "label": "Offers By Name",
+            "method": "GET",
+            "request": {
+              "method": "GET",
+              "url": "/offers/{{uniqueName}}",
+              "headers": {},
+              "body": {}
+            },
+            "condition": "results['node_1777808236319'].data?.offers?.length > 0"
+          },
+          "width": 210,
+          "height": 65,
+          "selected": false,
+          "dragging": false,
+          "positionAbsolute": {
+            "x": -347.7065163962501,
+            "y": -869.5624228192154
+          }
+        },
+        {
+          "id": "node_1777811565382",
+          "type": "apiNode",
+          "position": {
+            "x": -346.9777828484621,
+            "y": -774.1798675660959
+          },
+          "data": {
+            "label": "Offers ShowTimes",
+            "method": "GET",
+            "request": {
+              "method": "GET",
+              "url": "/offers/{{offerId}}/showtimes?cityId=7",
+              "headers": {},
+              "body": {}
+            },
+            "condition": "results['node_1777808236319'].data?.offers?.length > 0"
+          },
+          "width": 223,
+          "height": 65,
+          "selected": false,
+          "dragging": false,
+          "positionAbsolute": {
+            "x": -346.9777828484621,
+            "y": -774.1798675660959
+          }
+        }
+      ],
+      "edges": [
+        {
+          "source": "node_1777661182021",
+          "sourceHandle": null,
+          "target": "node_1777666572719",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777661182021-node_1777666572719"
+        },
+        {
+          "source": "node_1777744778789",
+          "sourceHandle": null,
+          "target": "node_1777649285254",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777744778789-node_1777649285254"
+        },
+        {
+          "source": "node_1777649285254",
+          "sourceHandle": null,
+          "target": "node_1777661182021",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777649285254-node_1777661182021"
+        },
+        {
+          "source": "node_1777666572719",
+          "sourceHandle": null,
+          "target": "node_1777808236319",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777666572719-node_1777808236319"
+        },
+        {
+          "source": "node_1777666572719",
+          "sourceHandle": null,
+          "target": "node_1777808256695",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777666572719-node_1777808256695"
+        },
+        {
+          "source": "node_1777808236319",
+          "sourceHandle": null,
+          "target": "node_1777811113808",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777808236319-node_1777811113808"
+        },
+        {
+          "source": "node_1777808236319",
+          "sourceHandle": null,
+          "target": "node_1777811456131",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777808236319-node_1777811456131"
+        },
+        {
+          "source": "node_1777808236319",
+          "sourceHandle": null,
+          "target": "node_1777811565382",
+          "targetHandle": null,
+          "type": "deletable",
+          "animated": true,
+          "id": "reactflow__edge-node_1777808236319-node_1777811565382"
+        }
+      ],
+      "mappings": [
+        {
+          "id": "map_1777653980906_bbmzf",
+          "from": {
+            "nodeId": "node_1777650679071",
+            "path": "data.cinema[0].cityId"
+          },
+          "to": {
+            "nodeId": "node_1777653900893",
+            "field": "body.cityId"
+          }
+        },
+        {
+          "id": "map_1777670281628_zoddy",
+          "from": {
+            "nodeId": "node_1777658199951",
+            "path": "data.cinema[0].cityId"
+          },
+          "to": {
+            "nodeId": "node_1777670124208",
+            "field": "queryParam.cityId"
+          }
+        },
+        {
+          "id": "map_1777670364111_xwv9j",
+          "from": {
+            "nodeId": "node_1777666572719",
+            "path": "data.film.id"
+          },
+          "to": {
+            "nodeId": "node_1777670124208",
+            "field": "queryParam.filmId"
+          }
+        },
+        {
+          "id": "map_1777670813241_ksapf",
+          "from": {
+            "nodeId": "node_1777666572719",
+            "path": "data.film.id"
+          },
+          "to": {
+            "nodeId": "node_1777670717719",
+            "field": "queryParam.filmId"
+          }
+        },
+        {
+          "id": "map_1777670853075_9o9nj",
+          "from": {
+            "nodeId": "node_1777658199951",
+            "path": "data.cinema[0].cityId"
+          },
+          "to": {
+            "nodeId": "node_1777670717719",
+            "field": "queryParam.cityId"
+          }
+        },
+        {
+          "id": "map_1777674652766_xjfnr",
+          "from": {
+            "nodeId": "node_1777658199951",
+            "path": "data.cinema[0].cityId"
+          },
+          "to": {
+            "nodeId": "node_1777674568865",
+            "field": "queryParam.cityId"
+          }
+        },
+        {
+          "id": "map_1777674708635_2r6mc",
+          "from": {
+            "nodeId": "node_1777666572719",
+            "path": "data.sessionsDates[0].date"
+          },
+          "to": {
+            "nodeId": "node_1777674568865",
+            "field": "queryParam.date"
+          }
+        },
+        {
+          "id": "map_1777674760394_iis6z",
+          "from": {
+            "nodeId": "node_1777666572719",
+            "path": "data.film.id"
+          },
+          "to": {
+            "nodeId": "node_1777674568865",
+            "field": "queryParam.filmId"
+          }
+        },
+        {
+          "id": "map_1777675014142_sd7ua",
+          "from": {
+            "nodeId": "node_1777658199951",
+            "path": "data.cinema[0].cityId"
+          },
+          "to": {
+            "nodeId": "node_1777674821623",
+            "field": "queryParam.cityId"
+          }
+        },
+        {
+          "id": "map_1777675061811_3njds",
+          "from": {
+            "nodeId": "node_1777666572719",
+            "path": "data.sessionsDates[0].date"
+          },
+          "to": {
+            "nodeId": "node_1777674821623",
+            "field": "queryParam.date"
+          }
+        },
+        {
+          "id": "map_1777675170432_7g1af",
+          "type": "collect",
+          "from": {
+            "nodeId": "node_1777658199951",
+            "arrayPath": "data.cinema",
+            "fieldPath": "id"
+          },
+          "to": {
+            "nodeId": "node_1777674821623",
+            "paramName": "cinemaIds"
+          }
+        },
+        {
+          "id": "map_1777675765963_tc1id",
+          "from": {
+            "nodeId": "node_1777666572719",
+            "path": "data.film.id"
+          },
+          "to": {
+            "nodeId": "node_1777674821623",
+            "field": "urlParam.filmId"
+          }
+        },
+        {
+          "id": "map_1777713764508_7r5wf",
+          "from": {
+            "nodeId": "node_1777674821623",
+            "path": "data.cinemas[0].experiences[0].sessions[0].id"
+          },
+          "to": {
+            "nodeId": "node_1777711601952",
+            "field": "body.sessionId"
+          }
+        },
+        {
+          "id": "map_1777720716954_rv5wf",
+          "from": {
+            "nodeId": "node_1777674821623",
+            "path": "data.cinemas[0].experiences[0].sessions[0].id"
+          },
+          "to": {
+            "nodeId": "node_1777720452990",
+            "field": "urlParam.sessionId"
+          }
+        },
+        {
+          "id": "map_1777720849273_rg5dj",
+          "from": {
+            "nodeId": "node_1777674821623",
+            "path": "data.cinemas[0].experiences[0].sessions[0].id"
+          },
+          "to": {
+            "nodeId": "node_1777720465395",
+            "field": "urlParam.sessionId"
+          }
+        },
+        {
+          "id": "map_1777720875861_4kmz0",
+          "from": {
+            "nodeId": "node_1777711601952",
+            "path": "data.order.id"
+          },
+          "to": {
+            "nodeId": "node_1777720465395",
+            "field": "queryParam.orderId"
+          }
+        },
+        {
+          "id": "map_1777730008947_lcq7m",
+          "from": {
+            "nodeId": "node_1777711601952",
+            "path": "data.order.id"
+          },
+          "to": {
+            "nodeId": "node_1777729103889",
+            "field": "urlParam.orderId"
+          }
+        },
+        {
+          "id": "map_1777732002970_ogsac",
+          "from": {
+            "nodeId": "node_1777729082030",
+            "path": "data"
+          },
+          "to": {
+            "nodeId": "node_1777729103889",
+            "field": "body"
+          }
+        },
+        {
+          "id": "map_1777732664476_azb5p",
+          "from": {
+            "nodeId": "node_1777729103889",
+            "path": "data.order.id"
+          },
+          "to": {
+            "nodeId": "node_1777732340545",
+            "field": "urlParam.orderId"
+          }
+        },
+        {
+          "id": "map_1777752898765_0i4hu",
+          "type": "random",
+          "from": {
+            "nodeId": "node_1777658199951",
+            "arrayPath": "data.cinema",
+            "fieldPath": "id"
+          },
+          "to": {
+            "nodeId": "node_1777752344428",
+            "field": "queryParam.cinemaId"
+          }
+        },
+        {
+          "id": "map_1777794396614_zwg7l",
+          "from": {
+            "nodeId": "node_1777661182021",
+            "path": "data.matchedCityId"
+          },
+          "to": {
+            "nodeId": "node_1777658199951",
+            "field": "urlParam.cityId"
+          }
+        },
+        {
+          "id": "map_1777794459917_68vip",
+          "from": {
+            "nodeId": "node_1777661182021",
+            "path": "data.matchedCityId"
+          },
+          "to": {
+            "nodeId": "node_1777752344428",
+            "field": "queryParam.cityId"
+          }
+        },
+        {
+          "id": "map_1777794681895_m27j9",
+          "from": {
+            "nodeId": "__iteration__",
+            "path": "id"
+          },
+          "to": {
+            "nodeId": "node_1777661182021",
+            "field": "queryParam.cityId"
+          }
+        },
+        {
+          "id": "map_1777798040103_rorev",
+          "from": {
+            "nodeId": "node_1777661182021",
+            "path": "data.matchedCityId"
+          },
+          "to": {
+            "nodeId": "node_1777797631551",
+            "field": "queryParam.cityId"
+          }
+        },
+        {
+          "id": "map_1777798132193_urw4d",
+          "from": {
+            "nodeId": "node_1777666572719",
+            "path": "data.film.id"
+          },
+          "to": {
+            "nodeId": "node_1777797631551",
+            "field": "urlParam.filmId"
+          }
+        },
+        {
+          "id": "map_1777799009570_oykeq",
+          "from": {
+            "nodeId": "node_1777661182021",
+            "path": "data.matchedCityId"
+          },
+          "to": {
+            "nodeId": "node_1777666572719",
+            "field": "queryParam.cityId"
+          }
+        },
+        {
+          "id": "map_1777800106826_1ncvj",
+          "from": {
+            "nodeId": "node_1777711601952",
+            "path": "data.order.id"
+          },
+          "to": {
+            "nodeId": "node_1777800030341",
+            "field": "urlParam.orderId"
+          }
+        },
+        {
+          "id": "map_1777808318706_s7ag5",
+          "from": {
+            "nodeId": "node_1777666572719",
+            "path": "data.film.id"
+          },
+          "to": {
+            "nodeId": "node_1777808256695",
+            "field": "queryParam.filmId"
+          }
+        },
+        {
+          "id": "map_1777811520438_g7x5c",
+          "type": "random",
+          "from": {
+            "nodeId": "node_1777808236319",
+            "arrayPath": "data.offers",
+            "fieldPath": "uniqueName"
+          },
+          "to": {
+            "nodeId": "node_1777811456131",
+            "field": "urlParam.uniqueName"
+          }
+        },
+        {
+          "id": "map_1777811613571_zfjyi",
+          "type": "random",
+          "from": {
+            "nodeId": "node_1777808236319",
+            "arrayPath": "data.offers",
+            "fieldPath": "id"
+          },
+          "to": {
+            "nodeId": "node_1777811565382",
+            "field": "urlParam.offerId"
+          }
+        },
+        {
+          "id": "map_1777818739691_w1a94",
+          "type": "random",
+          "from": {
+            "nodeId": "node_1777808236319",
+            "arrayPath": "data.offers",
+            "fieldPath": "id"
+          },
+          "to": {
+            "nodeId": "node_1777811113808",
+            "field": "urlParam.offerId"
           }
         }
       ]

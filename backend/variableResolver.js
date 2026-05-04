@@ -62,10 +62,11 @@ function resolveMappings(request, mappings, results, iterationItem) {
     let value;
 
     if (from.nodeId === '__iteration__') {
-      // Value comes from current iteration item
-      value = iterationItem !== undefined
-        ? (from.path ? _.get(iterationItem, from.path) : iterationItem)
-        : undefined;
+      // iterationItem is already the value extracted via iteration.itemPath,
+      // so we use it directly. Older saved workflows may have a redundant
+      // from.path equal to itemPath — ignore it to avoid double-extraction
+      // on a primitive (which would yield undefined).
+      value = iterationItem;
     } else {
       const sourceResult = results[from.nodeId];
       if (!sourceResult) continue;

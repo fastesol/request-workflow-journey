@@ -77,6 +77,7 @@ function MappingsTab({ nodeId, nodes, mappings, onUpdateMappings, results, onCon
   const [injectInto, setInjectInto] = useState('');
   const [stopPath, setStopPath] = useState('');
   const [stopCheck, setStopCheck] = useState('not-empty');
+  const [storeAs, setStoreAs] = useState('');
   // collect state
   const [collectField, setCollectField] = useState('');
   const [collectParamName, setCollectParamName] = useState('');
@@ -161,12 +162,15 @@ function MappingsTab({ nodeId, nodes, mappings, onUpdateMappings, results, onCon
       itemPath: itemKey,
       mode: 'sequential',
       stopCondition: stopPath.trim() ? { path: stopPath.trim(), check: stopCheck } : undefined,
+      storeAs: storeAs.trim() || undefined,
     };
     onConfigureIteration(iterConfig);
 
-    // If user wants to inject the extracted value into a specific request field (beyond {{item}} in URL)
+    // If user wants to inject the extracted value into a specific request field (beyond {{item}} in URL).
+    // The path is left empty: iteration.itemPath already does the extraction, so the mapping
+    // just forwards the resulting itemValue to the target request field.
     if (injectInto.trim()) {
-      const m = createMapping('__iteration__', itemKey, nodeId, injectInto.trim());
+      const m = createMapping('__iteration__', '', nodeId, injectInto.trim());
       onUpdateMappings([...mappings, m]);
     }
 
@@ -176,6 +180,7 @@ function MappingsTab({ nodeId, nodes, mappings, onUpdateMappings, results, onCon
     setInjectInto('');
     setStopPath('');
     setStopCheck('not-empty');
+    setStoreAs('');
   };
 
   const applyCollect = () => {
@@ -223,6 +228,9 @@ function MappingsTab({ nodeId, nodes, mappings, onUpdateMappings, results, onCon
             {currentIteration.itemPath && <div>Key: <span className="mapping-path">{currentIteration.itemPath}</span></div>}
             {currentIteration.stopCondition?.path && (
               <div>Stop when <span className="mapping-path">{currentIteration.stopCondition.path}</span> is {currentIteration.stopCondition.check}</div>
+            )}
+            {currentIteration.storeAs && (
+              <div>Store matched value as <span className="mapping-path">data.{currentIteration.storeAs}</span></div>
             )}
           </div>
         </div>
@@ -391,6 +399,22 @@ function MappingsTab({ nodeId, nodes, mappings, onUpdateMappings, results, onCon
                     <option value="exists">exists (not null / undefined)</option>
                     <option value="truthy">is truthy</option>
                   </select>
+                </div>
+
+                {/* Step 4: store the matching item value */}
+                <div>
+                  <label className="form-label-sm">
+                    4. Store matched value as
+                    <span style={{ color: '#475569', textTransform: 'none', marginLeft: 4 }}>
+                      (optional — exposed as <span className="mapping-path">data.&lt;name&gt;</span> in next nodes)
+                    </span>
+                  </label>
+                  <input
+                    className="dark-input"
+                    value={storeAs}
+                    onChange={(e) => setStoreAs(e.target.value)}
+                    placeholder="e.g. matchedCityId"
+                  />
                 </div>
 
                 <button
